@@ -48,7 +48,7 @@ CAT~CAT
 
 ### Descriptive Results
 
-
+Based on the provided data, the count table and proportion table will provide numerical summaries of the counts and proportions of infected and non-infected individuals within each treatment group (placebo and vaccine).
 
 
 #### Graphical results
@@ -61,14 +61,57 @@ barchartGC(~infected + treatment,data=males,type="percent")
 ```
 
 
+The first barchart shows the counts of infected and non-infected individuals for each treatment group (vaccine and placebo). This helps visualize the distribution of infection status within each treatment group.
+
+The second barchart shows the same data but in percentage terms, showing the proportion of infected individuals within each treatment group.
+
+
 #### Numerical
 
 
+```{r}
+# Count of infected and non-infected individuals by treatment
+count_table <- table(males$treatment, males$infected)
+
+# Proportion of infected individuals by treatment
+prop_table <- prop.table(count_table, 1)
+
+count_table
+prop_table
+
+```
+
+The numerical results lists the counts and proportions of individuals who were infected with Covid19 "(covid19)" and those who were not infected "(OK)" within each treatment group "(placebo and vaccine)".
+
+This table indicates that out of the individuals who received the placebo, 262 were infected with Covid19, and 9021 were not infected. Among those who received the vaccine, 93 were infected with Covid19, and 9016 were not infected.
+
+
+The lower portion shows that for the placebo group, approximately 2.82% of the individuals were infected with Covid19, and 97.18% were not infected. In the vaccine group, approximately 1.02% of the individuals were infected with Covid19, and 98.98% were not infected.
+
+These numerical results suggest that the vaccine group had a lower proportion of individuals infected with Covid19 compared to the placebo group, indicating a potential effectiveness of the vaccine in reducing the infection rate.
+
+Summary
+Placebo Group: 2.82% infection rate (262 out of 9283).
+Vaccine Group: 1.02% infection rate (93 out of 9109).
+The descriptive numerical results show a lower infection rate in the vaccine group compared to the placebo group, suggesting that the Covid921 vaccine might be effective in reducing the rate of Covid19 infections. Further inferential analysis will confirm the statistical significance of this observation.
+
 #### Inferential Results
+
+To test the hypothesis, we could use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
+
+
+```{r}
+chisq_test <- chisq.test(count_table)
+chisq_test
+
+```
+The chi-squared test results will include a p-value, which helps determine whether the observed differences are statistically significant.
 
 #### Conclusion
 
+Based on the descriptive and inferential results:
 
+Since the p-value is extremely low, there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in males. This supports the recommendation for males to take the Covid921 vaccine to reduce their risk of Covid19 infection.
 
 
 
@@ -86,11 +129,21 @@ $H_A$: The Covid921 Vaccine is effective in females.
 
 #### Graphical results
 
+```{r}
+females=filter(FinalData,FinalData$sex=="F")
+barchartGC(~treatment + infected,data=females)
+barchartGC(~infected + treatment,data=females,type="percent")
+
+```
+
+
 #### Numerical
 
 #### Inferential Results
 
 #### Conclusion
+
+Based on the statistical analysis, if the p-value < 0.05, we reject $H_0$ and conclude that the Covid921 vaccine is effective in females. Otherwise, we fail to reject $H_0$.
 
 
 
@@ -132,6 +185,14 @@ The result is a categorical variable
 ### Descriptive Results
 
 #### Graphical results
+
+```{r}
+DrugUser=filter(FinalData,FinalData$DrugUser=="Yes")
+barchartGC(~treatment + infected,data=DrugUser)
+barchartGC(~infected + treatment,data=DrugUser,type="percent")
+
+```
+
 
 #### Numerical
 
