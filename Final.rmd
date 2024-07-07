@@ -37,11 +37,28 @@ $H_A$: The Covid921 Vaccine is effective in males.
 
 ### Methods 
 
+Treatment is cat 
+
+Sex is cat 
+
+helper file we are using is 
+
+CAT~CAT 
+
 
 ### Descriptive Results
 
 
+
+
 #### Graphical results
+
+```{r}
+males=filter(FinalData,FinalData$sex=="M")
+barchartGC(~treatment + infected,data=males)
+barchartGC(~infected + treatment,data=males,type="percent")
+
+```
 
 
 #### Numerical
@@ -110,6 +127,7 @@ $H_A$: The Covid921 Vaccine is effective in Drug users.
 
 
 ### Methods
+The result is a categorical variable  
 
 ### Descriptive Results
 
