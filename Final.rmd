@@ -70,18 +70,14 @@ The second barchart shows the same data but in percentage terms, showing the pro
 
 
 ```{r}
-# Count of infected and non-infected individuals by treatment
 count_table <- table(males$treatment, males$infected)
-
-# Proportion of infected individuals by treatment
 prop_table <- prop.table(count_table, 1)
-
 count_table
 prop_table
 
 ```
 
-The numerical results lists the counts and proportions of individuals who were infected with Covid19 "(covid19)" and those who were not infected "(OK)" within each treatment group "(placebo and vaccine)".
+The numerical results shows the counts and proportions of males who were infected with Covid19 "(covid19)" and those who were not infected "(OK)" within each treatment group "(placebo and vaccine)".
 
 This table indicates that out of the individuals who received the placebo, 262 were infected with Covid19, and 9021 were not infected. Among those who received the vaccine, 93 were infected with Covid19, and 9016 were not infected.
 
@@ -109,11 +105,10 @@ The chi-squared test results will include a p-value, which helps determine wheth
 
 #### Conclusion
 
-Based on the descriptive and inferential results:
 
-Since the p-value is extremely low, there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in males. This supports the recommendation for males to take the Covid921 vaccine to reduce their risk of Covid19 infection.
+Based on the information above since the p-value of 0.000114 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in males.
 
-
+This supports the recommendation for males to take the Covid921 vaccine to reduce their risk of Covid-19 infection.
 
 ## Females
 
@@ -125,7 +120,18 @@ $H_A$: The Covid921 Vaccine is effective in females.
 
 ### Methods
 
+Treatment is cat 
+
+Sex is cat 
+
+helper file we are using is 
+
+CAT~CAT 
+
+
 ### Descriptive Results
+
+Based on the provided data, the count table and proportion table will provide numerical summaries of the counts and proportions of infected and non-infected individuals within each treatment group (placebo and vaccine).
 
 #### Graphical results
 
@@ -139,12 +145,47 @@ barchartGC(~infected + treatment,data=females,type="percent")
 
 #### Numerical
 
+```{r}
+count_table <- table(females$treatment, females$infected)
+prop_table <- prop.table(count_table, 1)
+count_table
+prop_table
+
+```
+
+The numerical results shows the counts and proportions of females who were infected with Covid19 "(covid19)" and those who were not infected "(OK)" within each treatment group "(placebo and vaccine)".
+
+This table indicates that out of the females who received the placebo, 237 were infected with Covid19, and 8970 females were not infected. Among those who received the vaccine, 128 females were infected with Covid19, and 8993 were not infected.
+
+
+The lower portion shows that for the placebo group, approximately 2.57% of the females were infected with Covid19, and 97.43% were not infected. In the vaccine group, approximately 1.40% of the females were infected with Covid19, and 98.60% were not infected.
+
+These numerical results suggest that the vaccine group had a lower proportion of females infected with Covid19 compared to the placebo group, indicating a potential effectiveness of the vaccine in reducing the infection rate.
+
+Summary
+Placebo Group: 2.57% infection rate (237 out of 9207).
+Vaccine Group: 1.40% infection rate (128 out of 9121).
+The descriptive numerical results show a lower infection rate in the vaccine group compared to the placebo group, suggesting that the Covid921 vaccine might be effective in reducing the rate of Covid19 infections. Further inferential analysis will confirm the statistical significance of this observation.
+
+
 #### Inferential Results
+
+To test the hypothesis, we could use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
+
+
+```{r}
+chisq_test <- chisq.test(count_table)
+chisq_test
+
+```
+
+The chi-squared test results will include a p-value, which helps determine whether the observed differences are statistically significant.
 
 #### Conclusion
 
-Based on the statistical analysis, if the p-value < 0.05, we reject $H_0$ and conclude that the Covid921 vaccine is effective in females. Otherwise, we fail to reject $H_0$.
+Based on the information above, since the p-value of 0.0000000191 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in females.
 
+This supports the recommendation for females to take the Covid921 vaccine to reduce their risk of Covid-19 infection.
 
 
 ## LGBTQ
@@ -196,7 +237,31 @@ barchartGC(~infected + treatment,data=DrugUser,type="percent")
 
 #### Numerical
 
+For the numerical analysis, we'll look at the counts and percentages of infected vs. not infected among vaccinated and unvaccinated drug users:
+
+
+```{r}
+# Contingency table
+table(DrugUser$treatment, DrugUser$infected)
+
+# Calculate percentages
+prop.table(table(DrugUser$treatment, DrugUser$infected), margin=1) * 100
+
+```
+
+
+
+
 #### Inferential Results
+
+To test the hypothesis, we can use a chi-square test of independence to see if there is a significant association between vaccination and infection status among drug users:
+
+```{r}
+chisq_test <- chisq.test(count_table)
+chisq_test
+
+```
+
 
 #### Conclusion
 
