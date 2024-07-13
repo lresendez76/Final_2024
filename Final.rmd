@@ -21,310 +21,150 @@ mutate(across(where(is.character), as.factor))
 ```
 
 # Introduction
-
-A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug users, and LGBTQ+ community . Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
-
-
-## Males
-
-$H_0$:The Covid921 Vaccine is not effective in males.
+A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
 
 
-$H_A$: The Covid921 Vaccine is effective in males.
-
-
-
-
-### Methods 
-
-Treatment is cat 
-
-Sex is cat 
-
-helper file we are using is 
-
-CAT~CAT 
-
-
-### Descriptive Results
-
-
-
-
-
-
-Based on the provided data, the count table and proportion table will provide numerical summaries of the counts and proportions of infected and non-infected individuals within each treatment group (placebo and vaccine).
-
-
-#### Graphical results
-
-
-
+$H_0$ The COVID vaccine has no effect on people in different subgroups.
+$H_A$ The COVID vaccine does have an effect on people different subgroups.
+## Methods 
+This statistical analysis we will be using is catergorical ~ categorical, because the COVID vaccine should be effective among subgroups
+The method we will be using to display the data us a bar chart, cross table, and chisq test
+# Males
+## Results
 ```{r}
-males=filter(FinalData,FinalData$sex=="M")
-barchartGC(~treatment + infected,data=males)
-barchartGC(~infected + treatment,data=males,type="percent")
-
+maleData = filter (FinalData,sex == "M")
+```
+## Descriptive Results
+### Graphical Descriptive 
+```{r}
+barchartGC(~infected+treatment,data=maleData)
+barchartGC(~infected+treatment,data=maleData, type="percent")
+```
+Based on the graph, it is showing us that the group of people who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
+### Numerical Descriptive
+```{r}
+table1 <- xtabs(~infected + treatment, data=maleData)
+rowPerc(table1)
+colPerc(table1)
+```
+This table is showing that 69.57% of the unvaccinated male group experienced symptoms while only 30.43% of the vaccinated males experienced symptoms. It is also telling us that the male placebo group, 2.55% of them contracted COVID while only 1.15% of the vaccinated group contracted COVID.
+## Descriptive Results
+### Graphical Descriptive 
+```{r}
+barchartGC(~infected+treatment,data=maleData)
+barchartGC(~infected+treatment,data=maleData, type="percent")
+```
+Based on the graph, it is showing us that the group of people who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
+### Numerical Descriptive
+```{r}
+table1 <- xtabs(~infected + treatment, data=maleData)
+rowPerc(table1)
+colPerc(table1)
+```
+This table is showing that 69.57% of the unvaccinated male group experienced symptoms while only 30.43% of the vaccinated males experienced symptoms. It is also telling us that the male placebo group, 2.55% of them contracted COVID while only 1.15% of the vaccinated group contracted COVID.
+### Inferential Results
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+The p-value is 0.0000000000001098, concluding that the p value is so small that we are rejecting the null hypothesis. Showing that COVID vaccine is effective between the male subgroup.
+Based on the Fisher exact test, we got a p-value of 0.0000000000004631 concluding this is giving a strong basis for the observed association between variables meaning we are rejecting the null hypothesis. The odds in this fisher test are showing males have a 2.24% chance of the events odds happening in one group giving more evidence to the positive association of the variables.
+# Females
+## Results
+```{r}
+FinalData = filter (FinalData,sex == "F")
+```
+## Descriptive Results
+### Graphical Descriptive 
+```{r}
+barchartGC(~infected+treatment,data=FinalData)
+barchartGC(~infected+treatment,data=FinalData, type="percent")
+```
+This graph is showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
+### Numerical Descriptive
+```{r}
+table2 <- xtabs(~infected + treatment, data=FinalData)
+rowPerc(table2)
+colPerc(table2)
+```
+The data from this table shows that from the female group that were infected with COVID 19, those who were unvaccinated, 60% of them experienced symptoms while only 40% of the female group who were vaccinated experienced symptoms. It is also showing that within the female placebo group, 2.04% were infected with COVID, while only 1.37% of the vaccinated group contracted COVID.
+### Inferential Results
+```{r}
+chisq.test(table2)
+chisqtestGC(table2)
+fisher.test(table2)
+```
+Based on this chisq test, the p-value is 0.0002732, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. This means that the COVID vaccine is effective within the female subgroup. 
+For the fisher exact test show that the odds are about 1.50%, suggesting that there is a significant correlation between the variables, showing that there is strong evidence directing that we are rejecting the null hypothesis. 
+# LGBTQ
+## Results
+```{r}
+LGBTQData = filter (FinalData,LGBTQ == "gay")
+```
+## Descriptive Results
+### Graphical Descriptive 
+```{r}
+barchartGC(~infected+treatment,data=LGBTQData)
+barchartGC(~infected+treatment,data=LGBTQData, type="percent")
+```
+This graph is showing that within the LGBTQ subgroup, those who got COVID and got vaccinated experienced significantly more symptoms than those their unvaccinated counterpart. Those who did not get COVID and were both vaccinated and unvaccinated did not show any difference.
+### Numerical Descriptive
+```{r}
+table3 <- xtabs(~infected + treatment, data=LGBTQData)
+rowPerc(table3)
+colPerc(table3)
+```
+This table is showing that within the LGBTQ placebo group they experienced 15.38% of symptoms while the the vaccinated group experienced 84.62% of syptoms. It is also showing that 0.66% of the LGBTQ group who had the placebo contracted COVID, while 3.54% of the vaccinated group contracted COVID.
+### Inferential Results
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+fisher.test(table3)
+```
+The chisq test shows that the p-value for the LGBTQ group is 0.0000006668 showing that there is an effect between the COVID vaccine and the LGBT subgroup, concluding that we are rejecting the null hypothesis.  
+In the fisher exact test, the percentage odds ratio is about 0.18%, showing that the odds are about 0.18 times lower in one variable group compared to the other, showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
+# DrugUsers
+## Results
+```{r}
+DruggiesData = filter(FinalData, DrugUser == "yes")
+```
+## Descriptive Results
+### Graphical Descriptive 
+```{r}
+barchartGC(~infected+treatment,data=DruggiesData)
+barchartGC(~infected+treatment,data=DruggiesData, type="percent")
+```
+This graph us showing that from the drug user group who contracted COVID, the ones who received the vaccine had more symptoms than those with the placebo while drug user group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated.
+### Numerical Descriptive
+```{r}
+table4 <- xtabs(~infected + treatment, data=DruggiesData)
+rowPerc(table4)
+colPerc(table4)
+```
+This table is showing that within the placebo drug user group, they experience 11.67% of symptoms while the vaccinated group experienced 88.33% of symptoms. It is also showing that 0.4% of the placebo group contracted COVID, while 3.06% of the vaccinated drug user group contracted COVID. There is a significant difference and effect between the placebo and COVID vaccine.
+### Inferential Results
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+fisher.test(table4)
 ```
 
 
-The first barchart shows the counts of infected and non-infected individuals for each treatment group (vaccine and placebo). This helps visualize the distribution of infection status within each treatment group.
+Based on this chisq test, the p-value is 0.00000002842 
 
-The second barchart shows the same data but in percentage terms, showing the proportion of infected individuals within each treatment group.
-
-
-#### Numerical
-
-
-```{r}
-count_table <- table(males$treatment, males$infected)
-prop_table <- prop.table(count_table, 1)
-count_table
-prop_table
-
-```
-
-The numerical results shows the counts and proportions of males who were infected with Covid19 "(covid19)" and those who were not infected "(OK)" within each treatment group "(placebo and vaccine)".
-
-This table indicates that out of the individuals who received the placebo, 262 were infected with Covid19, and 9021 were not infected. Among those who received the vaccine, 93 were infected with Covid19, and 9016 were not infected.
-
-
-The lower portion shows that for the placebo group, approximately 2.82% of the individuals were infected with Covid19, and 97.18% were not infected. In the vaccine group, approximately 1.02% of the individuals were infected with Covid19, and 98.98% were not infected.
-
-These numerical results suggest that the vaccine group had a lower proportion of individuals infected with Covid19 compared to the placebo group, indicating a potential effectiveness of the vaccine in reducing the infection rate.
-
-Summary
-Placebo Group: 2.82% infection rate (262 out of 9283).
-Vaccine Group: 1.02% infection rate (93 out of 9109).
-The descriptive numerical results show a lower infection rate in the vaccine group compared to the placebo group, suggesting that the Covid921 vaccine might be effective in reducing the rate of Covid19 infections. Further inferential analysis will confirm the statistical significance of this observation.
-
-#### Inferential Results
-
-To test the hypothesis, we could use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
-
-
-```{r}
-chisq_test <- chisq.test(count_table)
-chisq_test
-
-```
-The chi-squared test results will include a p-value, which helps determine whether the observed differences are statistically significant.
-
-#### Conclusion
-
-
-Based on the information above since the p-value of 0.000114 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in males.
-
-This supports the recommendation for males to take the Covid921 vaccine to reduce their risk of Covid-19 infection.
-
-
-## Females
-
-$H_0$:The Covid921 Vaccine is not effective in females.
-
-
-$H_A$: The Covid921 Vaccine is effective in females.
-
-
-### Methods
-
-Treatment is cat 
-
-Sex is cat 
-
-helper file we are using is 
-
-CAT~CAT 
-
-
-### Descriptive Results
-
-Based on the provided data, the count table and proportion table will provide numerical summaries of the counts and proportions of infected and non-infected individuals within each treatment group (placebo and vaccine).
-
-#### Graphical results
-
-```{r}
-females=filter(FinalData,FinalData$sex=="F")
-barchartGC(~treatment + infected,data=females)
-barchartGC(~infected + treatment,data=females,type="percent")
-
-```
-
-
-#### Numerical
-
-```{r}
-count_table <- table(females$treatment, females$infected)
-prop_table <- prop.table(count_table, 1)
-count_table
-prop_table
-
-```
-
-The numerical results shows the counts and proportions of females who were infected with Covid19 "(covid19)" and those who were not infected "(OK)" within each treatment group "(placebo and vaccine)".
-
-This table indicates that out of the females who received the placebo, 237 were infected with Covid19, and 8970 females were not infected. Among those who received the vaccine, 128 females were infected with Covid19, and 8993 were not infected.
-
-
-The lower portion shows that for the placebo group, approximately 2.57% of the females were infected with Covid19, and 97.43% were not infected. In the vaccine group, approximately 1.40% of the females were infected with Covid19, and 98.60% were not infected.
-
-These numerical results suggest that the vaccine group had a lower proportion of females infected with Covid19 compared to the placebo group, indicating a potential effectiveness of the vaccine in reducing the infection rate.
-
-Summary
-Placebo Group: 2.57% infection rate (237 out of 9207).
-Vaccine Group: 1.40% infection rate (128 out of 9121).
-The descriptive numerical results show a lower infection rate in the vaccine group compared to the placebo group, suggesting that the Covid921 vaccine might be effective in reducing the rate of Covid19 infections. Further inferential analysis will confirm the statistical significance of this observation.
-
-
-#### Inferential Results
-
-To test the hypothesis, we use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
-
-
-```{r}
-chisq_test <- chisq.test(count_table)
-chisq_test
-
-```
-
-The chi-squared test results will include a p-value, which helps determine whether the observed differences are statistically significant.
-
-#### Conclusion
-
-Based on the information above, since the p-value of 0.000114 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in females.
-
-This supports the recommendation for females to take the Covid921 vaccine to reduce their risk of Covid-19 infection.
-
-
-## LGBTQ
-
-$H_0$:The Covid921 Vaccine is not effective in LGBTQ Community.
-
-
-$H_A$: The Covid921 Vaccine is effective in LGBTQ Community.
-
-
-### Methods
-
-Treatment is cat 
-
-LGBTQ is cat 
-
-helper file we are using is 
-
-CAT~CAT 
-
-### Descriptive Results
-
-
-
-
-#### Graphical results Gay and Straight
-
-```{r}
-LGBTQ=filter(FinalData,FinalData$LGBTQ=="straight")
-barchartGC(~treatment + infected,data=LGBTQ)
-barchartGC(~infected + treatment,data=LGBTQ,type="percent")
-
-```
-
-#### Graphical results
-
-```{r}
-LGBTQ=filter(FinalData,FinalData$LGBTQ=="gay")
-barchartGC(~treatment + infected,data=LGBTQ)
-barchartGC(~infected + treatment,data=LGBTQ,type="percent")
-
-```
-
-
-
-#### Numerical
-
-```{r}
-count_table <- table(LGBTQ$treatment, LGBTQ$infected)
-prop_table <- prop.table(count_table, 1)
-count_table
-prop_table
-
-```
-
-#### Inferential Results
-
-To test the hypothesis, we use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
-
-
-```{r}
-chisq_test <- chisq.test(count_table)
-chisq_test
-
-```
-
-#### Conclusion
-
-The results of the chi-squared test indicate a high significant association between the Covid921 Vaccine and infection status within the LGBTQ community, with a p-value of less than 0.0002266. Therefore, we conclude that the Covid921 Vaccine is effective in reducing infection rates among both gay and straight individuals in the LGBTQ community. This strong evidence supports the vaccine's efficacy in this population.
-
-
-
-
-## Drug Users 
-
-$H_0$:The Covid921 Vaccine is not effective in Drug users.
-
-
-$H_A$: The Covid921 Vaccine is effective in Drug users.
-
-
-### Methods
-
-
-Treatment is cat 
-
-Sex is cat 
-
-helper file we are using is 
-
-CAT~CAT  
-
-### Descriptive Results
-
-#### Graphical results
-
-```{r}
-DrugUser=filter(FinalData,FinalData$DrugUser=="yes")
-barchartGC(~treatment + infected,data=DrugUser)
-barchartGC(~infected + treatment,data=DrugUser,type="percent")
-
-```
-
-
-#### Numerical
-
-```{r}
-count_table <- table(DrugUser$treatment, DrugUser$infected)
-
-prop_table <- prop.table(count_table, 1)
-count_table
-prop_table
-
-```
-
-
-
-
-#### Inferential Results
-
-To test the hypothesis, we can use a chi-square test of independence to see if there is a significant association between vaccination and infection status among drug users:
-
-```{r}
-chisq_test <- chisq.test(count_table)
-chisq_test
-
-```
-
-
-#### Conclusion
-
-The results of the chi-squared test indicate a highly significant association between the Covid921 Vaccine and infection status among drug users, with a p-value of 0.0001414. Since this p-value is well below the level of 0.05, we reject the null hypothesis. This provides strong evidence that the Covid921 Vaccine is effective in reducing infection rates among drug users. So, the findings support the vaccine's efficacy in this population.
+The fisher exact test showed a p-value of 0.00000232, which is showing that there is a  odds ratio of about 0.12%, suggesting that the odds of this occuring are lower in one group compared to the other, the 95% confidence ineravl supports this 
 
 # Overall Results and Conclusions
+
+In conclusion, the effectiveness of the COVID vaccine varies between subgroups. Staring with the all male group, we are rejecting the null hypothesis. Based on the bar chart, numerical graph, and the chisq and fisher tests, we can conclude that men who received the COVID vaccine and contracted it ultimately experience less symptoms than those who received the placebo. The men that did not get vaccinated and did not contract COVID showed little to no difference between eachother. In the group that did receive the placebo had an infection rate of 2.55%, and those of them who got the vaccine had an infection rate of 1.15%, showing that the vaccine is effective in men, therefore we are rejecting the null hypothesis for the male group. 
+
+Moving onto the all female group, we are also rejecting the null hypothesis. Based on all of the tests we have run, we can conclude that women who received the COVID vaccine and contracted it also experienced less symptoms than the women who received the placebo. The female group that did not get vaccinated and did not contract COVID also showed little to no difference compared to each other. Within the group that did receive the placebo, they had an infection rate of 2.04%. The group that received the vaccine had an infection rate of 1.37%, concluding that the vaccine is effective in women, therefore rejecting the null hypothesis for the female subgroup.
+
+Comparing the male and female subgroups, women had a smaller percentage of infection with the COVID vaccine and placebo than then men by 0.22% and 0.51%. It is not a big difference, but so far within the data analysis women experience less symptoms with the COVID vaccine. 
+
+In the LGBTQ subgroup, we are rejecting the null hypothesis. Based on our tests, we can conclude that the COVID vaccine is effective in this subgroup, but negatively. We found out that the LGBTQ people who received the COVID vaccine and contracted it experienced significant symptoms than those who received the placebo. The LGBTQ group that did not get vaccinated and did not contract COVID were almost exactly the same, showing no difference. In the LGBTQ group that did receive the placebo had an infection rate of 0.66% and those who did receive the vaccine had an infection rate of 3.54%, a very significant difference between the two, therefore rejecting the null hypothesis since the vaccine had an effect on the group.
+
+Finally, for the drug user group, they received the same result as the LGBTQ subgroup. We are rejecting the null hypothesis due to the drug users experiencing significantly more symptoms than the placebo group, showing that the COVID vaccine did have an effect, but not a positive one In the group of drug users that were vaccinated and contracted COVID, they had a 3.06% infection rate. The placebo group had a 0.4% infection rate showing a very big difference between the two and how much symptoms each group got, once again, we are rejecting the null.
+
+Comparing all of the tests from most positive COVID affects to the more negative COVID affects, the female had the best results with the COVID vaccine, while the LGBTQ subgroup had it the worst, experiencing the most symptoms while having COVID even with the vaccine. Males had almost the same results as the females, just a little less and drug users had fewer symptoms by only 0.48%. I would recommend that only males and females that are not drug users or LGBTQ to get the COVID vaccine since the effect was more positive than it was for the other two subgroups. 
