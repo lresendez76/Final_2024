@@ -22,7 +22,7 @@ mutate(across(where(is.character), as.factor))
 
 # Introduction
 
-A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
+A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug users, and LGBTQ+ community . Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
 
 
 ## Males
@@ -48,10 +48,17 @@ CAT~CAT
 
 ### Descriptive Results
 
+
+
+
+
+
 Based on the provided data, the count table and proportion table will provide numerical summaries of the counts and proportions of infected and non-infected individuals within each treatment group (placebo and vaccine).
 
 
 #### Graphical results
+
+
 
 ```{r}
 males=filter(FinalData,FinalData$sex=="M")
@@ -109,6 +116,7 @@ The chi-squared test results will include a p-value, which helps determine wheth
 Based on the information above since the p-value of 0.000114 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in males.
 
 This supports the recommendation for males to take the Covid921 vaccine to reduce their risk of Covid-19 infection.
+
 
 ## Females
 
@@ -170,7 +178,7 @@ The descriptive numerical results show a lower infection rate in the vaccine gro
 
 #### Inferential Results
 
-To test the hypothesis, we could use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
+To test the hypothesis, we use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
 
 
 ```{r}
@@ -183,7 +191,7 @@ The chi-squared test results will include a p-value, which helps determine wheth
 
 #### Conclusion
 
-Based on the information above, since the p-value of 0.0000000191 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in females.
+Based on the information above, since the p-value of 0.000114 is much less than the significance level of 0.05, we reject the null hypothesis, and this indicates that there is very strong statistical evidence to suggest that the Covid921 vaccine is effective in females.
 
 This supports the recommendation for females to take the Covid921 vaccine to reduce their risk of Covid-19 infection.
 
@@ -198,16 +206,63 @@ $H_A$: The Covid921 Vaccine is effective in LGBTQ Community.
 
 ### Methods
 
+Treatment is cat 
+
+LGBTQ is cat 
+
+helper file we are using is 
+
+CAT~CAT 
+
 ### Descriptive Results
+
+
+
+
+#### Graphical results Gay and Straight
+
+```{r}
+LGBTQ=filter(FinalData,FinalData$LGBTQ=="straight")
+barchartGC(~treatment + infected,data=LGBTQ)
+barchartGC(~infected + treatment,data=LGBTQ,type="percent")
+
+```
 
 #### Graphical results
 
+```{r}
+LGBTQ=filter(FinalData,FinalData$LGBTQ=="gay")
+barchartGC(~treatment + infected,data=LGBTQ)
+barchartGC(~infected + treatment,data=LGBTQ,type="percent")
+
+```
+
+
+
 #### Numerical
+
+```{r}
+count_table <- table(LGBTQ$treatment, LGBTQ$infected)
+prop_table <- prop.table(count_table, 1)
+count_table
+prop_table
+
+```
 
 #### Inferential Results
 
+To test the hypothesis, we use a chi-squared test to determine if there is a significant difference in infection rates between the vaccine and placebo groups:
+
+
+```{r}
+chisq_test <- chisq.test(count_table)
+chisq_test
+
+```
+
 #### Conclusion
 
+The results of the chi-squared test indicate a high significant association between the Covid921 Vaccine and infection status within the LGBTQ community, with a p-value of less than 0.0002266. Therefore, we conclude that the Covid921 Vaccine is effective in reducing infection rates among both gay and straight individuals in the LGBTQ community. This strong evidence supports the vaccine's efficacy in this population.
 
 
 
@@ -221,14 +276,22 @@ $H_A$: The Covid921 Vaccine is effective in Drug users.
 
 
 ### Methods
-The result is a categorical variable  
+
+
+Treatment is cat 
+
+Sex is cat 
+
+helper file we are using is 
+
+CAT~CAT  
 
 ### Descriptive Results
 
 #### Graphical results
 
 ```{r}
-DrugUser=filter(FinalData,FinalData$DrugUser=="Yes")
+DrugUser=filter(FinalData,FinalData$DrugUser=="yes")
 barchartGC(~treatment + infected,data=DrugUser)
 barchartGC(~infected + treatment,data=DrugUser,type="percent")
 
@@ -237,15 +300,12 @@ barchartGC(~infected + treatment,data=DrugUser,type="percent")
 
 #### Numerical
 
-For the numerical analysis, we'll look at the counts and percentages of infected vs. not infected among vaccinated and unvaccinated drug users:
-
-
 ```{r}
-# Contingency table
-table(DrugUser$treatment, DrugUser$infected)
+count_table <- table(DrugUser$treatment, DrugUser$infected)
 
-# Calculate percentages
-prop.table(table(DrugUser$treatment, DrugUser$infected), margin=1) * 100
+prop_table <- prop.table(count_table, 1)
+count_table
+prop_table
 
 ```
 
@@ -265,6 +325,6 @@ chisq_test
 
 #### Conclusion
 
-
+The results of the chi-squared test indicate a highly significant association between the Covid921 Vaccine and infection status among drug users, with a p-value of 0.0001414. Since this p-value is well below the level of 0.05, we reject the null hypothesis. This provides strong evidence that the Covid921 Vaccine is effective in reducing infection rates among drug users. So, the findings support the vaccine's efficacy in this population.
 
 # Overall Results and Conclusions
