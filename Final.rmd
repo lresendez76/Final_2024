@@ -21,40 +21,41 @@ mutate(across(where(is.character), as.factor))
 ```
 
 # Introduction
-A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
+A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
 
 
 
-
-$H_0$ The COVID vaccine has no effect on people in different subgroups.
-
-
-$H_A$ The COVID vaccine does have an effect on people different subgroups.
+$H_0$: The Covid-19 vaccine (drug) is not effective among the subgroup users.
 
 
-### Methods
-
-This statistical analysis we will be using is catergorical ~ categorical, because the COVID vaccine should be effective among subgroups
-The method we will be using to display the data us a bar chart, cross table, and chisq test
+$H_A$: The Covid-19 vaccine (drug) is effective non subgroup users.
 
 
 ### Males
+$H_0$: The vaccine is not effective in preventing Covid-19 in males.
 
 
+$H_A$: The vaccine is effective in preventing Covid-19 in males. 
 
 
-### Results from using maleData
+Data for this study came from a FinalData file provided by Dr. James Brownlow and other sources. 
+
+## Methods
+
+
+The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include males. For graphical displays we are using: bar chart, numerical display and inferential results. 
+
+
+## Results
 
 
 ```{r}
-maleData = filter (FinalData,sex == "M")
+maleData = filter (FinalData, sex == "M")
 ```
 
 
-### Descriptive Results
-
-
-### Graphical Descriptive 
+## Descriptive Results
+### Graphical Descriptive Results
 
 
 ```{r}
@@ -64,12 +65,11 @@ barchartGC(~infected+treatment,data=maleData, type="percent")
 
 
 
-Based on the graphs, the group of males who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
+
+The graph shows that among the males who got Covid-19, there was 30% who received the vaccine and 70% who got the placebo. It also shows that there was around a 10% difference in those who were OK, that received both the placebo and the vaccine.  
 
 
-
-### Numerical Descriptive
-
+### Numerical Descriptive Results
 
 
 ```{r}
@@ -78,22 +78,12 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
+The table shows that the people who took the vaccine and got Covid-19 there was 2 times the difference. The males who took the placebo had a 70% chance of not being infected and 30% less likely for the people who took the vaccine. Among those who were ok and took the vaccine, there was no difference. 
 
+The table shows that the people who took the vaccine and got Covid-19 there was 2 times the difference. There was 70% males who took the placebo that got Covid-19 and 30% of males who recievied the vaccine that got infected with Covid-19. Among those who were OK and took the vaccine or the placebo, there was no difference. 
 
-Based off this information the vaccine shows a significant reduction in the infection rate compared to the placebo:
-Infection Rate (COVID-19): 1.02% (Vaccine) vs. 2.82% (Placebo).
+## Inferential Results
 
-The vaccine maintains a higher proportion of healthy individuals (OK) compared to the placebo:
-OK Rate: 98.98% (Vaccine) vs. 97.18% (Placebo).
-The proportion of individuals with COVID-19 is much higher in the placebo group (73.80%) compared to the vaccine group (26.20%).
-
-The proportion of OK individuals is roughly equal between the two groups, with a slight edge for the vaccine group (49.99% for Vaccine vs. 50.01% for Placebo).
-
-In conclusion, the vaccine demonstrates a significant improvement in reducing COVID-19 infection rates and a slight improvement in maintaining a higher proportion of healthy individuals compared to the placebo.
-
-
-
-### Inferential Results
 
 ```{r}
 chisq.test(table1)
@@ -101,38 +91,43 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-### Males Conclusion
-
-There is overwhelming evidence to reject the null hypothesis of no association between the treatment (placebo or vaccine) and the infection status (COVID-19 infected or OK).
-
-Both Pearson's Chi-squared test and Fisher's Exact Test demonstrate that the vaccine is significantly associated with a lower risk of COVID-19 infection compared to the placebo.
-
-The odds of COVID-19 infection are approximately 2.82 times higher in the placebo group compared to the vaccine group.
-
-These findings strongly support the effectiveness of the vaccine in reducing the risk of COVID-19 infection.
 
 
-### Females
+The p-value is 0.00000000000000022. is so small that we failed to reject the null hypothesis. The vaccine is not effective in preventing Covid-19 among males. On the Fisher's Exact Test there is a p-value 0.00000000000000022 meaning there is a difference in getting Covid-19 and being a male.
 
 
 
+## Females
 
 
-## Results from using 
+$H_0$: The vaccine is not effective in preventing Covid-19 in females.
+
+
+$H_A$: The vaccine is effective in preventing Covid-19 in females. 
+
+
+The data for this study came from a FinalData file, provided by Dr. James Brownlow.
+
+
+## Methods
+
+
+The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include females. For graphical displays we are using: bar chart, numerical display and inferential results.
+
+
+## Results
 
 
 
 ```{r}
-femaleData = filter (FinalData,sex == "M")
+femaleData = filter(FinalData, sex == "F")
 ```
-
 
 
 ## Descriptive Results
 
 
-
-### Graphical Descriptive 
+### Graphical Descriptive Results
 
 
 
@@ -143,12 +138,10 @@ barchartGC(~infected+treatment,data=femaleData, type="percent")
 
 
 
-
-Based on the graphs, they are showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
-
+The graph shows that there was a difference in those who got Covid-19. There was 40% females who did get the vaccine and 60% females who received the placebo. There was no significant difference in those who were OK that received either the placebo or the vaccine. 
 
 
-### Numerical Descriptive
+### Numerical Descriptive Results
 
 
 
@@ -158,22 +151,9 @@ rowPerc(table2)
 colPerc(table2)
 ```
 
+In this chart, it shows that there was a 29.86% difference in those who got Covid-19. There was 35.07% of people who received the vaccine and 64.93% of people who got the placebo. For the people who were OK, there was only about a 0.66% difference.
 
-Based off this information the placebo group has a higher proportion of infected individuals (73.80%) compared to the vaccine group (26.20%).
-Within the placebo group, 2.82% of individuals are infected, whereas within the vaccine group, only 1.02% are infected.
-
-Proportion of OK:
-The placebo and vaccine groups have similar proportions of OK individuals (50.01% and 49.99% respectively).
-Within the placebo group, 97.18% of individuals are OK, while within the vaccine group, 98.98% are OK.
-
-Concluding the vaccine group has a significantly lower proportion of COVID-19 infected individuals compared to the placebo group.
-The vaccine is more effective in reducing the infection rate within its group (1.02%) compared to the placebo group (2.82%).
-
-Both treatments result in high proportions of OK individuals, with the vaccine showing a slight edge (98.98% vs. 97.18%).
-
-
-### Inferential Results
-
+## Infrenital Results
 
 
 ```{r}
@@ -181,33 +161,45 @@ chisq.test(table2)
 chisqtestGC(table2)
 fisher.test(table2)
 ```
+The p-value from the Chi-squared test is  0.0001914, which is small, therefore the vaccine is not effective in preventing Covid-19. On the Fisher's Exact Test there is a p-value 0.0001246 meaning there is a difference in getting Covid-19 and being a female. We fail to reject the null hypothesis because females can still get Covid-19 with the vaccine or the placebo.
 
 
-## Females Conclusion
+
+## LGBTQ
 
 
-There is overwhelming evidence to reject the null hypothesis of no association between the treatment (placebo or vaccine) and the infection status (COVID-19 infected or OK).
-Both Pearson's Chi-squared test and Fisher's Exact Test demonstrate that the vaccine is significantly associated with a lower risk of COVID-19 infection compared to the placebo.
-The odds of COVID-19 infection are approximately 2.26 times higher in the placebo group compared to the vaccine group.
-These findings strongly support the effectiveness of the vaccine in reducing the risk of COVID-19 infection.
+
+$H_0$: The vaccine is not effective in preventing Covid-19 in the LGBTQ community 
 
 
-### LGBTQ  
+$H_A$: The vaccine is effective in preventing Covid-19 in the LGBTQ community
+
+
+
+The data for this study came from a FinalData file, provided by Dr. James Brownlow.
+
+
+## Methods
+
+
+The method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include LGBTQ community. For graphical displays we are using: bar chart, numerical display and inferential results.
 
 
 ## Results
 
 
 ```{r}
-LGBTQData = filter (FinalData,LGBTQ == "gay")
+LGBTQData = filter(FinalData, LGBTQ == "gay")
 ```
 
 
-### Descriptive Results
+
+## Descriptive Results
 
 
 
-### Graphical Descriptive 
+### Graphical Descriptive Results
+
 
 
 ```{r}
@@ -216,12 +208,11 @@ barchartGC(~infected+treatment,data=LGBTQData, type="percent")
 ```
 
 
-
-This graph is showing that within the LGBTQ subgroup, those who got COVID and got vaccinated experienced significantly more symptoms than those their unvaccinated counterpart. Those who did not get COVID and were both vaccinated and unvaccinated did not show any difference.
-
+This graph shows that the people who got Covid-19, there was 80% of people who were vaccinated and 20% that received the placebo. Among those who were OK there was no significant difference. 
 
 
-### Numerical Descriptive
+### Numerical Descriptive Results
+
 
 
 ```{r}
@@ -231,10 +222,12 @@ colPerc(table3)
 ```
 
 
-This table is showing that within the LGBTQ placebo group they experienced 15.38% of symptoms while the the vaccinated group experienced 84.62% of syptoms. It is also showing that 0.66% of the LGBTQ group who had the placebo contracted COVID, while 3.54% of the vaccinated group contracted COVID.
+In this chart, it shows that there was a 76.80% difference in those who got Covid-19. There was 20.00% of people who received the vaccine and 80.00% of people who got the placebo. For the people who were OK, there was only about a 2.90% difference.
 
 
-### Inferential Results
+
+## Infrenital Results
+
 
 
 ```{r}
@@ -245,11 +238,26 @@ fisher.test(table3)
 
 
 
-The chisq test shows that the p-value for the LGBTQ group is 0.0000006668 showing that there is an effect between the COVID vaccine and the LGBT subgroup, concluding that we are rejecting the null hypothesis.  
-In the fisher exact test, the percentage odds ratio is about 0.18%, showing that the odds are about 0.18 times lower in one variable group compared to the other, showing a difference between the two groups, which is another example of rejecting the null hypothesis in this group.
+The Chi-squared p-value is 0.000002266, which is too small. Therefore the vaccine is not preventable against Covid-19 among the LGBTQ. In the Fisher's Exact Test the p-value is 0.0000007269 meaning there is a small difference in getting Covid-19 and being in the LGBTQ. We fail to reject the null hypothesis because people in the LGBTQ community can still get Covid-19 with the vaccine or the placebo. 
 
 
-### DrugUsers
+
+## DrugUsers
+
+
+$H_0$: The vaccine is not effective in preventing Covid-19 in drug users.
+
+
+$H_A$: The vaccine is effective in preventing Covid-19 in drug users.
+
+
+Data for this study came from a FinalData file provided by Dr. James Brownlow.
+
+
+## Methods
+
+
+The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include Drugusers. For graphical displays we are using: bar chart, numerical display and inferential results. 
 
 
 ## Results
@@ -260,11 +268,11 @@ DruggiesData = filter(FinalData, DrugUser == "yes")
 ```
 
 
-### Descriptive Results
+## Descriptive Results
 
 
+### Graphical Descriptive Results
 
-### Graphical Descriptive 
 
 
 ```{r}
@@ -273,12 +281,11 @@ barchartGC(~infected+treatment,data=DruggiesData, type="percent")
 ```
 
 
-
-This graph us showing that from the drug user group who contracted COVID, the ones who received the vaccine had more symptoms than those with the placebo while drug user group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated.
-
+In this graph it shows that the people who got Covid-19, there was 88% of drug users who got the vaccine and 12% of drug users who got the placebo. There was an approximate 10% difference in those who were OK, that received the placebo or the vaccine. 
 
 
-### Numerical Descriptive
+### Numerical Descriptive Results
+
 
 
 ```{r}
@@ -287,12 +294,11 @@ rowPerc(table4)
 colPerc(table4)
 ```
 
-
-This table is showing that within the placebo drug user group, they experience 11.67% of symptoms while the vaccinated group experienced 88.33% of symptoms. It is also showing that 0.4% of the placebo group contracted COVID, while 3.06% of the vaccinated drug user group contracted COVID. There is a significant difference and effect between the placebo and COVID vaccine.
-
+In this chart it shows that there was a 3.28% difference in those who got Covid-19. There was 3.61% of people who received the vaccine and 0.33% of people who got the placebo. For the people who were OK, there was only about a 2.61% difference.
 
 
-### Inferential Results
+
+## Infrenital Results
 
 
 
@@ -303,24 +309,28 @@ fisher.test(table4)
 ```
 
 
-Based on this chisq test, the p-value is 0.00000002842 
 
-The fisher exact test showed a p-value of 0.00000232, which is showing that there is a  odds ratio of about 0.12%, suggesting that the odds of this occurring are lower in one group compared to the other, the 95% confidence interval supports this.
-
-
-
-### Overall Results and Conclusions
+The p-value in the Chi-square Test is 0.0000000001414 which is too small, therefore the vaccine is not able to prevent Covid-19 among drug users. In the Fisher's Exact Test the p-value is 0.000000000003261 meaning there is a small difference in getting Covid-19 and being a drug user. We fail to reject the null hypothesis because drug users are able to get Covid-19 with or without the vaccine.
 
 
 
-In conclusion, the effectiveness of the COVID vaccine varies between subgroups. Staring with the all male group, we are rejecting the null hypothesis. Based on the bar chart, numerical graph, and the chisq and fisher tests, we can conclude that men who received the COVID vaccine and contracted it ultimately experience less symptoms than those who received the placebo. The men that did not get vaccinated and did not contract COVID showed little to no difference between eachother. In the group that did receive the placebo had an infection rate of 2.55%, and those of them who got the vaccine had an infection rate of 1.15%, showing that the vaccine is effective in men, therefore we are rejecting the null hypothesis for the male group. 
 
-Moving onto the all female group, we are also rejecting the null hypothesis. Based on all of the tests we have run, we can conclude that women who received the COVID vaccine and contracted it also experienced less symptoms than the women who received the placebo. The female group that did not get vaccinated and did not contract COVID also showed little to no difference compared to each other. Within the group that did receive the placebo, they had an infection rate of 2.04%. The group that received the vaccine had an infection rate of 1.37%, concluding that the vaccine is effective in women, therefore rejecting the null hypothesis for the female subgroup.
+# Overall Results and Conclusions
 
-Comparing the male and female subgroups, women had a smaller percentage of infection with the COVID vaccine and placebo than then men by 0.22% and 0.51%. It is not a big difference, but so far within the data analysis women experience less symptoms with the COVID vaccine. 
 
-In the LGBTQ subgroup, we are rejecting the null hypothesis. Based on our tests, we can conclude that the COVID vaccine is effective in this subgroup, but negatively. We found out that the LGBTQ people who received the COVID vaccine and contracted it experienced significant symptoms than those who received the placebo. The LGBTQ group that did not get vaccinated and did not contract COVID were almost exactly the same, showing no difference. In the LGBTQ group that did receive the placebo had an infection rate of 0.66% and those who did receive the vaccine had an infection rate of 3.54%, a very significant difference between the two, therefore rejecting the null hypothesis since the vaccine had an effect on the group.
 
-Finally, for the drug user group, they received the same result as the LGBTQ subgroup. We are rejecting the null hypothesis due to the drug users experiencing significantly more symptoms than the placebo group, showing that the COVID vaccine did have an effect, but not a positive one In the group of drug users that were vaccinated and contracted COVID, they had a 3.06% infection rate. The placebo group had a 0.4% infection rate showing a very big difference between the two and how much symptoms each group got, once again, we are rejecting the null.
+In the original question we asked if the vaccine was able to prevent Covid-19 among these subgroups: males, females, LGBTQ and drug users. 
 
-Comparing all of the tests from most positive COVID affects to the more negative COVID affects, the female had the best results with the COVID vaccine, while the LGBTQ subgroup had it the worst, experiencing the most symptoms while having COVID even with the vaccine. Males had almost the same results as the females, just a little less and drug users had fewer symptoms by only 0.48%. I would recommend that only males and females that are not drug users or LGBTQ to get the COVID vaccine since the effect was more positive than it was for the other two subgroups. 
+We have found that the vaccine is ineffective at preventing Covid-19 in those subgroups.
+
+In the original question we asked if the vaccine was able to prevent Covid-19 among these subgroups: males, females, LGBTQ and drug users. We have found that the vaccine is ineffective at preventing Covid-19 in those subgroups, therefore we fail to reject the null hypothesis. 
+
+We asked if the vaccine was effective in preventing Covid-19 
+
+We inquired as to whether the vaccine was successful in preventing Covid-19 inside the male subgroup. Our results finally led us to conclude that the vaccine is ineffective in preventing Covid-19 among males.For this subgroup, we fail to reject the null hypothesis. 
+
+Since the vaccine was unable to prevent Covid-19 in the subgroup of females when the identical question was posed, we fail to reject the null hypothesis. 
+
+The LGBTQ community was also included in the question, and our data indicates that the vaccine did not successfully prevent Covid-19, thus we fail to reject the null hypothesis. 
+
+The same questions were asked of the drug users as well, and our data indicates that the vaccination did not prevent Covid-19, therefore we fail to reject the null hypothesis.
