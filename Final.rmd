@@ -24,7 +24,11 @@ mutate(across(where(is.character), as.factor))
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of sub populations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
 
 
+
+
 $H_0$ The COVID vaccine has no effect on people in different subgroups.
+
+
 $H_A$ The COVID vaccine does have an effect on people different subgroups.
 
 
@@ -39,7 +43,7 @@ The method we will be using to display the data us a bar chart, cross table, and
 
 
 
-### Results
+### Results from using maleData
 
 
 ```{r}
@@ -60,7 +64,7 @@ barchartGC(~infected+treatment,data=maleData, type="percent")
 
 
 
-Based on the graph, it is showing us that the group of people who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
+Based on the graphs, the group of males who contracted COVID and the ones who received the vaccine had less symptoms than those that received the placebo, while the all male group that didn't contract COVID showed no difference between those who were vaccinated and unvaccinated. 
 
 
 
@@ -73,8 +77,17 @@ table1 <- xtabs(~infected + treatment, data=maleData)
 rowPerc(table1)
 colPerc(table1)
 ```
-This table is showing that 69.57% of the unvaccinated male group experienced symptoms while only 30.43% of the vaccinated males experienced symptoms. It is also telling us that the male placebo group, 2.55% of them contracted COVID while only 1.15% of the vaccinated group contracted COVID.
 
+
+
+Based off this information the vaccine shows a significant reduction in the infection rate compared to the placebo:
+Infection Rate (COVID-19): 1.02% (Vaccine) vs. 2.82% (Placebo).
+The vaccine maintains a higher proportion of healthy individuals (OK) compared to the placebo:
+OK Rate: 98.98% (Vaccine) vs. 97.18% (Placebo).
+The proportion of individuals with COVID-19 is much higher in the placebo group (73.80%) compared to the vaccine group (26.20%).
+
+The proportion of OK individuals is roughly equal between the two groups, with a slight edge for the vaccine group (49.99% for Vaccine vs. 50.01% for Placebo).
+In conclusion, the vaccine demonstrates a significant improvement in reducing COVID-19 infection rates and a slight improvement in maintaining a higher proportion of healthy individuals compared to the placebo.
 
 
 
@@ -88,12 +101,18 @@ fisher.test(table1)
 
 
 
-The p-value is 0.0000000000001098, concluding that the p value is so small that we are rejecting the null hypothesis. Showing that COVID vaccine is effective between the male subgroup.
-Based on the Fisher exact test, we got a p-value of 0.0000000000004631 concluding this is giving a strong basis for the observed association between variables meaning we are rejecting the null hypothesis. The odds in this fisher test are showing males have a 2.24% chance of the events odds happening in one group giving more evidence to the positive association of the variables.
+There is a statistically significant association between the treatment received (placebo or vaccine) and the infection status (COVID-19 infected or OK).
+
+The null hypothesis, which states that there is no association between the treatment and infection status, is rejected based on the extremely small p-value (< 0.00000000000000022).
+
+The vaccine significantly reduces the odds of being infected with COVID-19 compared to the placebo, with an odds ratio of 2.82.
+
+These results strongly support the effectiveness of the vaccine in preventing COVID-19 infections.
 
 
 
 # Females
+
 
 
 
