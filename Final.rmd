@@ -82,11 +82,13 @@ colPerc(table1)
 
 Based off this information the vaccine shows a significant reduction in the infection rate compared to the placebo:
 Infection Rate (COVID-19): 1.02% (Vaccine) vs. 2.82% (Placebo).
+
 The vaccine maintains a higher proportion of healthy individuals (OK) compared to the placebo:
 OK Rate: 98.98% (Vaccine) vs. 97.18% (Placebo).
 The proportion of individuals with COVID-19 is much higher in the placebo group (73.80%) compared to the vaccine group (26.20%).
 
 The proportion of OK individuals is roughly equal between the two groups, with a slight edge for the vaccine group (49.99% for Vaccine vs. 50.01% for Placebo).
+
 In conclusion, the vaccine demonstrates a significant improvement in reducing COVID-19 infection rates and a slight improvement in maintaining a higher proportion of healthy individuals compared to the placebo.
 
 
@@ -99,30 +101,29 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
+### Males Conclusion
+
+There is overwhelming evidence to reject the null hypothesis of no association between the treatment (placebo or vaccine) and the infection status (COVID-19 infected or OK).
+
+Both Pearson's Chi-squared test and Fisher's Exact Test demonstrate that the vaccine is significantly associated with a lower risk of COVID-19 infection compared to the placebo.
+
+The odds of COVID-19 infection are approximately 2.82 times higher in the placebo group compared to the vaccine group.
+
+These findings strongly support the effectiveness of the vaccine in reducing the risk of COVID-19 infection.
 
 
-There is a statistically significant association between the treatment received (placebo or vaccine) and the infection status (COVID-19 infected or OK).
-
-The null hypothesis, which states that there is no association between the treatment and infection status, is rejected based on the extremely small p-value (< 0.00000000000000022).
-
-The vaccine significantly reduces the odds of being infected with COVID-19 compared to the placebo, with an odds ratio of 2.82.
-
-These results strongly support the effectiveness of the vaccine in preventing COVID-19 infections.
-
-
-
-# Females
-
-
+### Females
 
 
 
-## Results
+
+
+## Results from using 
 
 
 
 ```{r}
-FinalData = filter (FinalData,sex == "F")
+femaleData = filter (FinalData,sex == "M")
 ```
 
 
@@ -136,13 +137,14 @@ FinalData = filter (FinalData,sex == "F")
 
 
 ```{r}
-barchartGC(~infected+treatment,data=FinalData)
-barchartGC(~infected+treatment,data=FinalData, type="percent")
+barchartGC(~infected+treatment,data=femaleData)
+barchartGC(~infected+treatment,data=femaleData, type="percent")
 ```
 
 
 
-This graph is showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
+
+Based on the graphs, they are showing that from the all female group who contracted COVID, the ones who received the vaccine had less symptoms than those with the placebo while the all the female group that did not contract COVID showed no difference between those who were vaccinated and not vaccinated. 
 
 
 
@@ -151,15 +153,23 @@ This graph is showing that from the all female group who contracted COVID, the o
 
 
 ```{r}
-table2 <- xtabs(~infected + treatment, data=FinalData)
+table2 <- xtabs(~infected + treatment, data=femaleData)
 rowPerc(table2)
 colPerc(table2)
 ```
 
 
+Based off this information the placebo group has a higher proportion of infected individuals (73.80%) compared to the vaccine group (26.20%).
+Within the placebo group, 2.82% of individuals are infected, whereas within the vaccine group, only 1.02% are infected.
 
-The data from this table shows that from the female group that were infected with COVID 19, those who were unvaccinated, 60% of them experienced symptoms while only 40% of the female group who were vaccinated experienced symptoms. It is also showing that within the female placebo group, 2.04% were infected with COVID, while only 1.37% of the vaccinated group contracted COVID.
+Proportion of OK:
+The placebo and vaccine groups have similar proportions of OK individuals (50.01% and 49.99% respectively).
+Within the placebo group, 97.18% of individuals are OK, while within the vaccine group, 98.98% are OK.
 
+Concluding the vaccine group has a significantly lower proportion of COVID-19 infected individuals compared to the placebo group.
+The vaccine is more effective in reducing the infection rate within its group (1.02%) compared to the placebo group (2.82%).
+
+Both treatments result in high proportions of OK individuals, with the vaccine showing a slight edge (98.98% vs. 97.18%).
 
 
 ### Inferential Results
@@ -173,9 +183,13 @@ fisher.test(table2)
 ```
 
 
+## Females Conclusion
 
-Based on this chisq test, the p-value is 0.0002732, showing that there is a significant difference, concluding that we are rejecting the null hypothesis. This means that the COVID vaccine is effective within the female subgroup. 
-For the fisher exact test show that the odds are about 1.50%, suggesting that there is a significant correlation between the variables, showing that there is strong evidence directing that we are rejecting the null hypothesis. 
+
+There is overwhelming evidence to reject the null hypothesis of no association between the treatment (placebo or vaccine) and the infection status (COVID-19 infected or OK).
+Both Pearson's Chi-squared test and Fisher's Exact Test demonstrate that the vaccine is significantly associated with a lower risk of COVID-19 infection compared to the placebo.
+The odds of COVID-19 infection are approximately 2.26 times higher in the placebo group compared to the vaccine group.
+These findings strongly support the effectiveness of the vaccine in reducing the risk of COVID-19 infection.
 
 
 ### LGBTQ  
