@@ -1,5 +1,5 @@
 ---
-title: "Covid91 vaccine study Final2024"
+title: "Covid921 Vaccine Stats Final2024 Report"
 author: "Luis Resendez"
 output: 
   html_document:
@@ -50,15 +50,13 @@ The response method used is Cat~Cat. Data used was based on data from FinalData.
 
 
 
-
-
 ```{r}
 maleData = filter (FinalData, sex == "M")
 ```
 
 
 ## Descriptive Results
-### Graphical Descriptive Results
+### Graphical  Results
 
 
 ```{r}
@@ -128,9 +126,7 @@ femaleData = filter(FinalData, sex == "F")
 
 
 ## Descriptive Results
-
-
-### Graphical Descriptive Results
+### Graphical Results
 
 
 
@@ -198,10 +194,7 @@ LGBTQData = filter(FinalData, LGBTQ == "gay")
 
 
 ## Descriptive Results
-
-
-
-### Graphical Descriptive Results
+### Graphical Results
 
 
 
@@ -272,9 +265,7 @@ DruggiesData = filter(FinalData, DrugUser == "yes")
 
 
 ## Descriptive Results
-
-
-### Graphical Descriptive Results
+### Graphical Results
 
 
 
@@ -322,18 +313,54 @@ The p-value in the Chi-square Test is 0.0000000001414 which is too small, theref
 
 
 
-In the original question we asked if the vaccine was able to prevent Covid-19 among these subgroups: males, females, LGBTQ and drug users. 
+### Males
 
-We have found that the vaccine is ineffective at preventing Covid-19 in those subgroups.
 
-In the original question we asked if the vaccine was able to prevent Covid-19 among these subgroups: males, females, LGBTQ and drug users. We have found that the vaccine is ineffective at preventing Covid-19 in those subgroups, therefore we fail to reject the null hypothesis. 
+Hypothesis Testing: We tested whether the vaccine is effective in preventing Covid-19 among males.
+Results: The Chi-squared and Fisher's Exact tests showed extremely low p-values (e.g.,<0.00000000000000022
+<0.00000000000000022), indicating that the vaccine did not effectively prevent Covid-19 among males. The data suggests no significant difference in Covid-19 rates between those who received the vaccine and those who received the placebo.
 
-We asked if the vaccine was effective in preventing Covid-19 
 
-We inquired as to whether the vaccine was successful in preventing Covid-19 inside the male subgroup. Our results finally led us to conclude that the vaccine is ineffective in preventing Covid-19 among males.For this subgroup, we fail to reject the null hypothesis. 
+### Females
 
-Since the vaccine was unable to prevent Covid-19 in the subgroup of females when the identical question was posed, we fail to reject the null hypothesis. 
 
-The LGBTQ community was also included in the question, and our data indicates that the vaccine did not successfully prevent Covid-19, thus we fail to reject the null hypothesis. 
+Hypothesis Testing: Similar to males, we tested whether the vaccine is effective in preventing Covid-19 among females.
+Results: The p-values from Chi-squared and Fisher's Exact tests were 
+0.0001914
+0.0001914 and 
+0.0001246
+0.0001246 respectively, suggesting that the vaccine was not effective in preventing Covid-19 among females. There was no significant difference in Covid-19 rates between those who received the vaccine and those who received the placebo.
 
-The same questions were asked of the drug users as well, and our data indicates that the vaccination did not prevent Covid-19, therefore we fail to reject the null hypothesis.
+
+### LGBTQ
+
+
+Hypothesis Testing:We tested whether the vaccine is effective in preventing Covid-19 among the LGBTQ community.
+Results: Both Chi-squared and Fisher's Exact tests yielded very low p-values (e.g., 0.000002266
+0.000002266 and 
+0.0000007269
+0.0000007269), indicating that the vaccine was not effective in preventing Covid-19 among the LGBTQ community. The data showed no significant difference in Covid-19 rates between vaccinated individuals and those who received the placebo.
+
+
+### Drug Users
+
+
+Hypothesis Testing: We tested whether the vaccine is effective in preventing Covid-19 among drug users.
+Results: The Chi-squared and Fisher's Exact tests resulted in extremely low p-values (e.g., 0.0000000001414
+0.0000000001414 and 
+0.000000000003261
+0.000000000003261), indicating that the vaccine did not effectively prevent Covid-19 among drug users. There was no significant difference in Covid-19 rates between those who received the vaccine and those who received the placebo.
+
+
+### Conclusion
+
+
+Based on the results across all subgroups (males, females, LGBTQ, and drug users), the data strongly suggests that the Covid-19 vaccine (Covid921) tested in these clinical trials did not effectively prevent Covid-19 compared to the placebo. Therefore, it is recommended that individuals within these subgroups consider other preventive measures or vaccines if available, given the ineffectiveness observed in this study.
+
+This structured approach using hypothesis testing, descriptive statistics, and graphical representation provides a clear assessment of the vaccine's effectiveness across diverse population subgroups, supporting informed decision-making and further research directions.
+
+
+
+
+
+
