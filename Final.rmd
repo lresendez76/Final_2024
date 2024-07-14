@@ -49,6 +49,9 @@ The response method used is Cat~Cat. Data used was based on data from FinalData.
 ## Results
 
 
+
+
+
 ```{r}
 maleData = filter (FinalData, sex == "M")
 ```
