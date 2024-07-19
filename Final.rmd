@@ -134,14 +134,11 @@ $H_A$: The vaccine is effective in preventing Covid-19 in the LGBTQ community
 
 
 
-The data for this study came from a FinalData file, provided by Dr. James Brownlow.
-
-
 ## Methods
 
-
-The method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include LGBTQ community. For graphical displays we are using: bar chart, numerical display and inferential results.
-
+LGBTQ is CAT
+Treatment is CAT
+Helper File I used was CAT ~ CAT
 
 
 
