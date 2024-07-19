@@ -26,139 +26,101 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 
 
-### Males
+## Males
+$H_0$: The Covid921 vaccine is not effective in males
 
+$H_A$: The Covid921 vaccine is effective in males
 
-$H_0$: The vaccine is not effective in preventing Covid-19 in males.
+### Methods
+treatment will be Cat
+infected will be Cat
+helper file we are using is
+CAT~CAT
 
+### Descriptive Results
 
-$H_A$: The vaccine is effective in preventing Covid-19 in males. 
-
-
-Data for this study came from a FinalData file provided by Dr. James Brownlow and other sources. 
-
-## Methods
-
-
-The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include males. For graphical displays we are using: bar chart, numerical display and inferential results. 
-
-
-## Results
-
-
-
+#### Graphical Results
 ```{r}
-maleData = filter (FinalData, sex == "M")
+males=filter(FinalData,FinalData$sex=="M")
+barchartGC(~treatment + infected,data=males)
+barchartGC(~infected + treatment,data=males,type="percent")
+
 ```
 
+This chart shows that males who got the actual vaccines are less likely to get Covid921,
+than those who got the placebo vaccine.
 
-## Descriptive Results
-### Graphical  Results
 
-
+#### Numerical Results
 ```{r}
-barchartGC(~infected+treatment,data=maleData)
-barchartGC(~infected+treatment,data=maleData, type="percent")
-```
-
-
-
-
-The graph shows that among the males who got Covid-19, there was 30% who received the vaccine and 70% who got the placebo. It also shows that there was around a 10% difference in those who were OK, that received both the placebo and the vaccine.  
-
-
-### Numerical Descriptive Results
-
-
-```{r}
-table1 <- xtabs(~infected + treatment, data=maleData)
+table1 <- xtabs(~treatment + infected,data=males)
 rowPerc(table1)
 colPerc(table1)
 ```
+This shows that about 74% males who took the placebo got covid19, where about 26% of males who got the vaccines got covid19
 
-The table shows that the people who took the vaccine and got Covid-19 there was 2 times the difference. The males who took the placebo had a 70% chance of not being infected and 30% less likely for the people who took the vaccine. Among those who were ok and took the vaccine, there was no difference. 
-
-The table shows that the people who took the vaccine and got Covid-19 there was 2 times the difference. There was 70% males who took the placebo that got Covid-19 and 30% of males who recievied the vaccine that got infected with Covid-19. Among those who were OK and took the vaccine or the placebo, there was no difference. 
-
-## Inferential Results
-
+#### Inferential Results
 
 ```{r}
 chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+When running the Chi-squared we get a pvalue of .00000000000000022 which is less than 0.05. This means that we reject the null hypothesis that Covid921 vaccine is not effective in males
 
+When running the Fisher Exact test we have .00000000000000022 which is also less than 0.05.
 
+The odds ratio would be 2.81 : 1, which means that their is a 2.81 is more likely to get when taking placebo, than those who are 1 times more likely to get covid when taking the vaccines.
 
-The p-value is 0.00000000000000022. is so small that we failed to reject the null hypothesis. The vaccine is not effective in preventing Covid-19 among males. On the Fisher's Exact Test there is a p-value 0.00000000000000022 meaning there is a difference in getting Covid-19 and being a male.
+#### Conclusion
+
+Our question was to find if the Covid19 is effected in males or not effective in males. When doing our graphical result it shows that males who got the covid vaccines are less likely to get covid then those who got Placebo. When indicating the numerical results, it shows that about 74% males who took the placebo got covid19, where about 26% of males who got the vaccines got covid19. We ran the Chi-square and got the Pvalue of .00000000000000022 which is less than .05. This indicates that we reject the null hypothesis. When doing the fisher test we came out with the same hypothesis as the chi-sqr. There for we reject the null hypothesis again. We conclude that taking the covid19 vaccine is effective in males.
+
 
 
 
 ## Females
 
+$H_0$: The Covid921 vaccine is not effective in females
 
-$H_0$: The vaccine is not effective in preventing Covid-19 in females.
+$H_A$: The Covid921 vaccine is effective in females
 
+### Methods
+Females is CAT
+Treatment is CAT
+Helper File we use
+CAT ~ CAT
 
-$H_A$: The vaccine is effective in preventing Covid-19 in females. 
+### Descriptive Results
 
-
-The data for this study came from a FinalData file, provided by Dr. James Brownlow.
-
-
-## Methods
-
-
-The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include females. For graphical displays we are using: bar chart, numerical display and inferential results.
-
-
-## Results
-
-
+#### Graphical Results
 
 ```{r}
-femaleData = filter(FinalData, sex == "F")
+females=filter(FinalData,FinalData$sex=="F")
+barchartGC(~treatment + infected,data=females)
+barchartGC(~infected + treatment,data=females,type="percent")
+
 ```
 
+This chart shows that females who got the actual vaccines are less likely to get Covid921,
+than those who got the placebo vaccine.
 
-## Descriptive Results
-### Graphical Results
-
-
+#### Numerical Results
 
 ```{r}
-barchartGC(~infected+treatment,data=femaleData)
-barchartGC(~infected+treatment,data=femaleData, type="percent")
+table1 <- xtabs(~treatment + infected,data=females)
+rowPerc(table1)
+colPerc(table1)
 ```
+When doing the numerical results it shows that about 65% of women who got placebos are more likely to get Covid19 than those who actually got the vaccines which was about 35% of women.
 
-
-
-The graph shows that there was a difference in those who got Covid-19. There was 40% females who did get the vaccine and 60% females who received the placebo. There was no significant difference in those who were OK that received either the placebo or the vaccine. 
-
-
-### Numerical Descriptive Results
-
-
+#### Inferential Results
 
 ```{r}
-table2 <- xtabs(~infected + treatment, data=femaleData)
-rowPerc(table2)
-colPerc(table2)
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
 ```
-
-In this chart, it shows that there was a 29.86% difference in those who got Covid-19. There was 35.07% of people who received the vaccine and 64.93% of people who got the placebo. For the people who were OK, there was only about a 0.66% difference.
-
-## Infrenital Results
-
-
-```{r}
-chisq.test(table2)
-chisqtestGC(table2)
-fisher.test(table2)
-```
-The p-value from the Chi-squared test is  0.0001914, which is small, therefore the vaccine is not effective in preventing Covid-19. On the Fisher's Exact Test there is a p-value 0.0001246 meaning there is a difference in getting Covid-19 and being a female. We fail to reject the null hypothesis because females can still get Covid-19 with the vaccine or the placebo.
-
 
 
 ## LGBTQ
@@ -181,7 +143,7 @@ The data for this study came from a FinalData file, provided by Dr. James Brownl
 The method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include LGBTQ community. For graphical displays we are using: bar chart, numerical display and inferential results.
 
 
-## Results
+
 
 
 ```{r}
@@ -253,7 +215,7 @@ Data for this study came from a FinalData file provided by Dr. James Brownlow.
 The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include Drugusers. For graphical displays we are using: bar chart, numerical display and inferential results. 
 
 
-## Results
+
 
 
 ```{r}
