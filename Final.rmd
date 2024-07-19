@@ -25,13 +25,10 @@ A new  preventative vaccine (covid921) is under test in clinical trials. Given t
 
 
 
-$H_0$: The Covid-19 vaccine (drug) is not effective among the subgroup users.
-
-
-$H_A$: The Covid-19 vaccine (drug) is effective non subgroup users.
-
 
 ### Males
+
+
 $H_0$: The vaccine is not effective in preventing Covid-19 in males.
 
 
