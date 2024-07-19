@@ -173,10 +173,7 @@ rowPerc(table3)
 colPerc(table3)
 ```
 
-
-In this chart, it shows that there was a 76.80% difference in those who got Covid-19. There was 20.00% of people who received the vaccine and 80.00% of people who got the placebo. For the people who were OK, there was only about a 2.90% difference.
-
-
+Numerical results indicates that the COVID-19 vaccine is effective in reducing the risk of contracting the virus compared to the placebo. The odds of getting COVID-19 with the vaccine are approximately 24% of the odds with the placebo, and the risk of infection with the vaccine is about 44.8% of the risk with the placebo. The vaccine also achieves a relative risk reduction of around 55.2%, suggesting a significant protective effect.
 
 ## Infrenital Results
 
@@ -190,7 +187,7 @@ fisher.test(table3)
 
 
 
-The Chi-squared p-value is 0.000002266, which is too small. Therefore the vaccine is not preventable against Covid-19 among the LGBTQ. In the Fisher's Exact Test the p-value is 0.0000007269 meaning there is a small difference in getting Covid-19 and being in the LGBTQ. We fail to reject the null hypothesis because people in the LGBTQ community can still get Covid-19 with the vaccine or the placebo. 
+The Chi-squared p-value is 0.000002266, which is too small. Therefore the vaccine is not preventable against Covid-19 among the LGBTQ. In the Fisher's Exact Test the p-value is 0.0000007269The odds of getting COVID-19 with the vaccine are approximately 0.24 times the odds of getting COVID-19 with the placebo. This means that the vaccine significantly reduces the odds of contracting COVID-19 compared to the placebo. We fail to reject the null hypothesis because people in the LGBTQ community can still get Covid-19 with the vaccine or the placebo. 
 
 
 
