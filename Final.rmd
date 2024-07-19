@@ -205,9 +205,9 @@ Data for this study came from a FinalData file provided by Dr. James Brownlow.
 
 ## Methods
 
-
-The response method used is Cat~Cat. Data used was based on data from FinalData. We have to subset the data to include Drugusers. For graphical displays we are using: bar chart, numerical display and inferential results. 
-
+DrugUser is CAT
+Treatment is CAT
+Helper File I used was CAT ~ CAT
 
 
 
@@ -228,8 +228,7 @@ barchartGC(~infected+treatment,data=DruggiesData, type="percent")
 ```
 
 
-In this graph it shows that the people who got Covid-19, there was 88% of drug users who got the vaccine and 12% of drug users who got the placebo. There was an approximate 10% difference in those who were OK, that received the placebo or the vaccine. 
-
+In this graph it shows that the Drug Users that got the placebo are less likely to get covid19 then those who got the vaccine. But both were about 50% ok.
 
 ### Numerical Descriptive Results
 
@@ -241,7 +240,7 @@ rowPerc(table4)
 colPerc(table4)
 ```
 
-In this chart it shows that there was a 3.28% difference in those who got Covid-19. There was 3.61% of people who received the vaccine and 0.33% of people who got the placebo. For the people who were OK, there was only about a 2.61% difference.
+In this data it shows that there was a 3.28% difference in those who got Covid-19. There was 3.61% of people who received the vaccine and 0.33% of people who got the placebo. For the people who were OK, there was only about a 2.61% difference. Although, This analysis shows an unusual result where the vaccine appears to increase the risk of infection compared to the placebo, which is contrary to expectations. This could suggest either an anomaly in the data or a specific context of the study that should be reviewed. In a typical scenario, a vaccine should reduce the risk of COVID-19, not increase it.
 
 
 
