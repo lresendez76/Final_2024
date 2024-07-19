@@ -21,31 +21,41 @@ mutate(across(where(is.character), as.factor))
 ```
 
 # Introduction
+
+
 A new  preventative vaccine (covid921) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbiage when referencing p-values in conclusions.
 
 
 
 
 ## Males
+
+
 $H_0$: The Covid921 vaccine is not effective in males
 
 $H_A$: The Covid921 vaccine is effective in males
 
 ### Methods
-treatment will be Cat
-infected will be Cat
+
+
+Treatment will be Cat
+Male will be Cat
 helper file we are using is
 CAT~CAT
 
 ### Descriptive Results
 
 #### Graphical Results
+
+
 ```{r}
 males=filter(FinalData,FinalData$sex=="M")
 barchartGC(~treatment + infected,data=males)
 barchartGC(~infected + treatment,data=males,type="percent")
 
 ```
+
+
 
 This graph shows that the MALES who got the placebo were more infected than the MALES that were vaccinated, but about 50% that got placebos were OK, and about 50% of MALES with the vaccine were OK.
 
@@ -56,7 +66,11 @@ table1 <- xtabs(~treatment + infected,data=males)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
 This shows that about 74% males who took the placebo got covid19, where about 26% of males who got the vaccines got covid19
+
+
 
 #### Inferential Results
 
@@ -65,6 +79,8 @@ chisq.test(table1)
 chisqtestGC(table1)
 fisher.test(table1)
 ```
+
+
 The statistical analysis shows a significant difference in the rate of COVID-19 infection between the placebo and vaccine groups. The chi-square test and Fisher’s Exact Test are both 0.00000000022 indicating that the vaccine significantly reduces the likelihood of contracting COVID-19. Specifically, the odds of getting COVID-19 are about 2.82 times higher for individuals receiving the placebo compared to those receiving the vaccine, with a 95% confidence interval suggesting that the vaccine is effective in preventing COVID-19 with a high degree of statistical significance.
 
 
@@ -79,7 +95,9 @@ $H_0$: The Covid921 vaccine is not effective in females
 $H_A$: The Covid921 vaccine is effective in females
 
 ### Methods
-Females is CAT
+
+
+Female is CAT
 Treatment is CAT
 Helper File we use
 CAT ~ CAT
@@ -95,6 +113,8 @@ barchartGC(~infected + treatment,data=females,type="percent")
 
 ```
 
+
+
 This graph shows that the FEMALES who got the placebo were more infected than the FEMALES that were vaccinated, but about 50% that got placebos were OK, and about 51% of FEMALES with the vaccine were OK.
 
 
@@ -105,6 +125,9 @@ table1 <- xtabs(~treatment + infected,data=females)
 rowPerc(table1)
 colPerc(table1)
 ```
+
+
+
 The numerical results shows the data indicates that the COVID-19 vaccine is effective in reducing the likelihood of contracting COVID-19 compared to the placebo. Specifically, the odds of getting COVID-19 are reduced by approximately 46.9% for those receiving the vaccine compared to those receiving the placebo. The relative risk reduction is about 45.5%, meaning that the vaccine lowers the risk of infection by roughly 45.5% compared to the placebo.
 
 
@@ -200,8 +223,6 @@ $H_0$: The vaccine is not effective in preventing Covid-19 in drug users.
 $H_A$: The vaccine is effective in preventing Covid-19 in drug users.
 
 
-Data for this study came from a FinalData file provided by Dr. James Brownlow.
-
 
 ## Methods
 
@@ -267,7 +288,7 @@ The p-value in the Chi-square Test is 0.0000000001414 which is too small, theref
 
 ## Males
 
-The Covid921 vaccine is effective in males.
+
 Descriptive Results and Graphical Results graphs shows that males who received the placebo had a higher rate of COVID-19 infection compared to those who received the vaccine. About 50% of males in both groups were "OK," indicating that the placebo group had a higher infection rate.
 
 Numerical Results show approximately 74% of males who took the placebo got COVID-19, while about 26% of males who received the vaccine got COVID-19.
@@ -280,11 +301,11 @@ Fisher’s Exact Test p-value: 2.2
 
 Odds Ratio: 2.82 (95% CI: [2.21, 3.61])
 
-So the vaccine is highly effective for males. The analysis indicates that males who received the vaccine had significantly lower odds of contracting COVID-19 compared to those who received the placebo. The odds of getting COVID-19 were about 2.82 times higher for those receiving the placebo compared to those receiving the vaccine. This suggests that the vaccine offers strong protection against COVID-19 for males.
+So the vaccine is highly effective for males. The analysis indicates that males who received the vaccine had significantly lower odds of contracting COVID-19 compared to those who received the placebo. The odds of getting COVID-19 were about 2.82 times higher for those receiving the placebo compared to those receiving the vaccine. This suggests that the vaccine offers strong protection against COVID-19 for males. So we reject the null hypothesis. The Covid921 vaccine is effective in preventing COVID-19 in males.
 
 ## Females
 
-The Covid921 vaccine is effective in females.
+
 Descriptive Results and Graphical Results graphs shows that females who received the placebo had a higher rate of COVID-19 infection compared to those who received the vaccine. Both groups had about a 50% "OK" rate, with a slight increase in the "OK" percentage for the vaccine group.
 
 Numerical Results show the odds of getting COVID-19 were reduced by approximately 46.9% for those receiving the vaccine compared to those receiving the placebo. The relative risk reduction was about 45.5%.
@@ -300,11 +321,12 @@ Fisher’s Exact Test p-value: 1.246
  
 Odds Ratio: 1.86 (95% CI: [1.49, 2.32])
 
-So the vaccine is effective for females. The analysis demonstrates that the COVID-19 vaccine significantly reduces the risk of infection in females. Specifically, the odds of getting COVID-19 were about 1.86 times higher for those receiving the placebo compared to those receiving the vaccine, indicating that the vaccine is effective in preventing COVID-19 for females as well.
+So the vaccine is effective for females. The analysis demonstrates that the COVID-19 vaccine significantly reduces the risk of infection in females. Specifically, the odds of getting COVID-19 were about 1.86 times higher for those receiving the placebo compared to those receiving the vaccine, indicating that the vaccine is effective in preventing COVID-19 for females as well. So we reject the null hypothesis. The Covid921 vaccine is effective in preventing COVID-19 in females.
+
+
 
 ## LGBTQ Community
 
-The vaccine is effective in preventing Covid-19 in the LGBTQ community.
 Descriptive Results and Graphical Results show that LGBTQ individuals who received the placebo had a higher rate of COVID-19 infection compared to those who received the vaccine. Both groups had a somewhat lower "OK" rate compared to the male and female groups.
 
 Numerical Results Show the odds of getting COVID-19 with the vaccine were approximately 24% of the odds with the placebo. The risk of infection with the vaccine was about 44.8% of the risk with the placebo, indicating a significant protective effect.
@@ -319,12 +341,9 @@ Fisher’s Exact Test p-value: 7.269
 
 Odds Ratio: 0.24 (95% CI: [0.17, 0.33])
 
-So the vaccine is effective for the LGBTQ community. The analysis indicates that the vaccine significantly reduces the risk of COVID-19 infection among LGBTQ individuals. The odds of contracting COVID-19 were about 0.24 times the odds for those receiving the placebo, demonstrating that the vaccine provides significant protection.
+So the vaccine is effective for the LGBTQ community. The analysis indicates that the vaccine significantly reduces the risk of COVID-19 infection among LGBTQ individuals. The odds of contracting COVID-19 were about 0.24 times the odds for those receiving the placebo, demonstrating that the vaccine provides significant protection. So we reject the null hypothesis. The Covid921 vaccine is effective in preventing COVID-19 in the LGBTQ community.
 
 ## Drug Users
-
-
-The vaccine is effective in preventing Covid-19 in drug users.
 
 Descriptive Results and Graphical Results show that drug users who received the placebo had a lower rate of COVID-19 infection compared to those who received the vaccine. Both groups had a similar "OK" rate, with the vaccine group showing a slightly higher infection rate.
 
@@ -340,7 +359,7 @@ Fisher’s Exact Test p-value: 3.261
 
 Odds Ratio: 4.27 (95% CI: [2.22, 8.88])
 
-So the vaccine does not appear to be effective for drug users. The data reveals an unexpected result where the vaccine group had a higher infection rate compared to the placebo group. This suggests there may be an anomaly in the data or a unique context affecting drug users, which warrants further investigation. In this case, the vaccine did not provide the expected protective effect and might have increased the risk of COVID-19.
+So the vaccine does not appear to be effective for drug users. The data reveals an unexpected result where the vaccine group had a higher infection rate compared to the placebo group. This suggests there may be an anomaly in the data or a unique context affecting drug users, which warrants further investigation. In this case, the vaccine did not provide the expected protective effect and might have increased the risk of COVID-19. So we fail to reject the null hypothesis.
 
 ## Overall Conclusion
 
