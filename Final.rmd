@@ -265,54 +265,85 @@ The p-value in the Chi-square Test is 0.0000000001414 which is too small, theref
 
 
 
-### Males
+## Males
+
+The Covid921 vaccine is effective in males.
+Descriptive Results and Graphical Results graphs shows that males who received the placebo had a higher rate of COVID-19 infection compared to those who received the vaccine. About 50% of males in both groups were "OK," indicating that the placebo group had a higher infection rate.
+
+Numerical Results show approximately 74% of males who took the placebo got COVID-19, while about 26% of males who received the vaccine got COVID-19.
+
+Inferential Results show that statistical tests revealed a significant difference in infection rates between the placebo and vaccine groups:
+
+Chi-Square Test p-value: 2.2
+
+Fisher’s Exact Test p-value: 2.2
+
+Odds Ratio: 2.82 (95% CI: [2.21, 3.61])
+
+So the vaccine is highly effective for males. The analysis indicates that males who received the vaccine had significantly lower odds of contracting COVID-19 compared to those who received the placebo. The odds of getting COVID-19 were about 2.82 times higher for those receiving the placebo compared to those receiving the vaccine. This suggests that the vaccine offers strong protection against COVID-19 for males.
+
+## Females
+
+The Covid921 vaccine is effective in females.
+Descriptive Results and Graphical Results graphs shows that females who received the placebo had a higher rate of COVID-19 infection compared to those who received the vaccine. Both groups had about a 50% "OK" rate, with a slight increase in the "OK" percentage for the vaccine group.
+
+Numerical Results show the odds of getting COVID-19 were reduced by approximately 46.9% for those receiving the vaccine compared to those receiving the placebo. The relative risk reduction was about 45.5%.
+
+Inferential Results
+The statistical tests confirmed a significant difference in infection rates:
+
+Chi-Square Test p-value: 1.914
+
+ 
+Fisher’s Exact Test p-value: 1.246
+
+ 
+Odds Ratio: 1.86 (95% CI: [1.49, 2.32])
+
+So the vaccine is effective for females. The analysis demonstrates that the COVID-19 vaccine significantly reduces the risk of infection in females. Specifically, the odds of getting COVID-19 were about 1.86 times higher for those receiving the placebo compared to those receiving the vaccine, indicating that the vaccine is effective in preventing COVID-19 for females as well.
+
+## LGBTQ Community
+
+The vaccine is effective in preventing Covid-19 in the LGBTQ community.
+Descriptive Results and Graphical Results show that LGBTQ individuals who received the placebo had a higher rate of COVID-19 infection compared to those who received the vaccine. Both groups had a somewhat lower "OK" rate compared to the male and female groups.
+
+Numerical Results Show the odds of getting COVID-19 with the vaccine were approximately 24% of the odds with the placebo. The risk of infection with the vaccine was about 44.8% of the risk with the placebo, indicating a significant protective effect.
+
+Inferential Results
+The statistical tests showed a significant difference in infection rates:
+
+Chi-Square Test p-value: 2.266
+
+ 
+Fisher’s Exact Test p-value: 7.269
+
+Odds Ratio: 0.24 (95% CI: [0.17, 0.33])
+
+So the vaccine is effective for the LGBTQ community. The analysis indicates that the vaccine significantly reduces the risk of COVID-19 infection among LGBTQ individuals. The odds of contracting COVID-19 were about 0.24 times the odds for those receiving the placebo, demonstrating that the vaccine provides significant protection.
+
+## Drug Users
 
 
-Hypothesis Testing: We tested whether the vaccine is effective in preventing Covid-19 among males.
-Results: The Chi-squared and Fisher's Exact tests showed extremely low p-values (e.g.,<0.00000000000000022
-<0.00000000000000022), indicating that the vaccine did not effectively prevent Covid-19 among males. The data suggests no significant difference in Covid-19 rates between those who received the vaccine and those who received the placebo.
+The vaccine is effective in preventing Covid-19 in drug users.
 
+Descriptive Results and Graphical Results show that drug users who received the placebo had a lower rate of COVID-19 infection compared to those who received the vaccine. Both groups had a similar "OK" rate, with the vaccine group showing a slightly higher infection rate.
 
-### Females
+Numerical Results analysis shows a 3.28% difference in the rate of COVID-19 between the vaccine and placebo groups, with the vaccine appearing to increase the risk of infection, contrary to expectations.
 
+Inferential Results
+The statistical tests indicated significant results, but with an unusual outcome:
 
-Hypothesis Testing: Similar to males, we tested whether the vaccine is effective in preventing Covid-19 among females.
-Results: The p-values from Chi-squared and Fisher's Exact tests were 
-0.0001914
-0.0001914 and 
-0.0001246
-0.0001246 respectively, suggesting that the vaccine was not effective in preventing Covid-19 among females. There was no significant difference in Covid-19 rates between those who received the vaccine and those who received the placebo.
+Chi-Square Test p-value: 1.414
 
+ 
+Fisher’s Exact Test p-value: 3.261
 
-### LGBTQ
+Odds Ratio: 4.27 (95% CI: [2.22, 8.88])
 
+So the vaccine does not appear to be effective for drug users. The data reveals an unexpected result where the vaccine group had a higher infection rate compared to the placebo group. This suggests there may be an anomaly in the data or a unique context affecting drug users, which warrants further investigation. In this case, the vaccine did not provide the expected protective effect and might have increased the risk of COVID-19.
 
-Hypothesis Testing:We tested whether the vaccine is effective in preventing Covid-19 among the LGBTQ community.
-Results: Both Chi-squared and Fisher's Exact tests yielded very low p-values (e.g., 0.000002266
-0.000002266 and 
-0.0000007269
-0.0000007269), indicating that the vaccine was not effective in preventing Covid-19 among the LGBTQ community. The data showed no significant difference in Covid-19 rates between vaccinated individuals and those who received the placebo.
+## Overall Conclusion
 
-
-### Drug Users
-
-
-Hypothesis Testing: We tested whether the vaccine is effective in preventing Covid-19 among drug users.
-Results: The Chi-squared and Fisher's Exact tests resulted in extremely low p-values (e.g., 0.0000000001414
-0.0000000001414 and 
-0.000000000003261
-0.000000000003261), indicating that the vaccine did not effectively prevent Covid-19 among drug users. There was no significant difference in Covid-19 rates between those who received the vaccine and those who received the placebo.
-
-
-### Conclusion
-
-
-Based on the results across all subgroups (males, females, LGBTQ, and drug users), the data strongly suggests that the Covid-19 vaccine (Covid921) tested in these clinical trials did not effectively prevent Covid-19 compared to the placebo. Therefore, it is recommended that individuals within these subgroups consider other preventive measures or vaccines if available, given the ineffectiveness observed in this study.
-
-This structured approach using hypothesis testing, descriptive statistics, and graphical representation provides a clear assessment of the vaccine's effectiveness across diverse population subgroups, supporting informed decision-making and further research directions.
-
-
-
-
+In summary, the COVID-19 vaccine demonstrated effectiveness across most groups analyzed, showing significant reductions in COVID-19 infection rates among males, females, and the LGBTQ community. For males and females, the vaccine significantly reduced the odds of contracting COVID-19 compared to the placebo. However, the data for the LGBTQ community also confirmed the vaccine's effectiveness. In contrast, the analysis for drug users revealed an unusual outcome where the vaccine appeared to increase the risk of COVID-19 infection, which suggests the need for further review of this specific group.
 
 
